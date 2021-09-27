@@ -4,21 +4,18 @@ H = love.graphics.getHeight()
 
 local T = {}
 local room = {}
-
+local keyx = W/2-10
+local keyy =H/2
 function T.load()
-  doorl = makeDoor(1,1,0,0, false,false)
-  doorc = makeDoor(1,0,1,W/2-50,false,false)
---  doorr = makeDoor(1,0,0,W-100, false,true)
+  key = love.graphics.newImage("assets/key.png")
+  doorl = makeDoor(1,1,0,0,false, false)
   table.insert(room, doorl)
-  table.insert(room,doorc)
-  --table.insert(room,doorr)
 end
 
 function T.draw()
   for i = 1, #room do
       room[i].draw()
     end
-    love.graphics.print("room2b",20,20)
     love.graphics.setColor(1,1,1,1)
     love.graphics.rectangle("line", W/4, H/4, 400, 300)
     love.graphics.line(0, 0,W/4,H/4)
@@ -29,6 +26,8 @@ function T.draw()
     love.graphics.rectangle("fill", W/4, H-50, W/2, 30)
     love.graphics.setColor(1,1,1)
     love.graphics.print("Go Back",W/2-10,H-40)
+    --put key in
+    love.graphics.draw(key,keyx,keyy,0,0.2,0.2)
 end
 
 
@@ -37,13 +36,18 @@ function T.update(dt)
       local x = love.mouse.getX()
       local y = love.mouse.getY()
       if x>room[1].x and x<room[1].x+room[1].w then
-        state = 2
-      end
-      if x>room[2].x and x<room[2].x+room[2].w then
-        state = 6
+        state = 5
       end
       if x>W/4 and x<3*W/4 and y>H-50 and y<H-20 then
-        state = 1
+        state = 3
+      end
+      local imgW = 251
+      local imgH = 200
+      if x>keyx and x<keyx+imgW and y>keyy and y<keyy+imgH then
+        --remove img
+        hasKey = true
+        keyy = H
+        keyx = W
       end
     end
 end

@@ -17,6 +17,16 @@ H = love.graphics.getHeight()
     function door.draw()
         love.graphics.setColor(door.r,door.g,door.b, 1)
         love.graphics.rectangle("fill", door.x, door.y, door.w, door.h)
+        if door.isdoorlocked then
+          if hasKey == false then
+            love.graphics.setColor(1,0,0,1)
+            love.graphics.print("Door is Locked: Find key", door.x, door.y-20)
+          end
+          if hasKey == true then
+            love.graphics.setColor(0,1,0,1)
+            love.graphics.print("Key Aquired: can now go through door", door.x, door.y-20)
+          end
+        end
     end
 
     return door
