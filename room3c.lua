@@ -4,24 +4,20 @@ H = love.graphics.getHeight()
 
 local T = {}
 local room = {}
-local keyx = W/2-10
-local keyy =H/2
+local keyx = W/2-40
+local keyy =H/2-200
 function T.load()
+
   key = love.graphics.newImage("assets/key.png")
-  doorl = makeDoor(1,1,0,0,false, false)
+  doorl = makeDoor(1,1,0,200,false, false)
   table.insert(room, doorl)
 end
 
 function T.draw()
+  love.graphics.draw(backgrounds[3],0,0)
   for i = 1, #room do
       room[i].draw()
     end
-    love.graphics.setColor(1,1,1,1)
-    love.graphics.rectangle("line", W/4, H/4, 400, 300)
-    love.graphics.line(0, 0,W/4,H/4)
-    love.graphics.line(W/4+400,H/4,W,0)
-    love.graphics.line(0,H,W/4,H/4+300)
-    love.graphics.line(W/4+400, H/4+300, W,H)
     love.graphics.setColor(1,0,0)
     love.graphics.rectangle("fill", W/4, H-50, W/2, 30)
     love.graphics.setColor(1,1,1)

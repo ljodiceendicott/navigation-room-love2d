@@ -8,6 +8,7 @@ local win = require("win")
 local room3b = require("room3b")
 local room3c = require("room3c")
 local gameover = require("gameover")
+backgrounds = {}
 
 function love.load()
   room1.load()
@@ -17,6 +18,15 @@ function love.load()
   room3b.load()
   room3c.load()
   gameover.load()
+
+  background1= love.graphics.newImage("assets/backgrounds/background1.png")
+  background2= love.graphics.newImage("assets/backgrounds/background2.png")
+  background3= love.graphics.newImage("assets/backgrounds/background3.png")
+  background4= love.graphics.newImage("assets/backgrounds/background4.png")
+  table.insert(backgrounds,background1)
+  table.insert(backgrounds,background2)
+  table.insert(backgrounds,background3)
+  table.insert(backgrounds,background4)
 end
 
 function love.draw()

@@ -6,7 +6,8 @@ local T = {}
 local room = {}
 
 function T.load()
-  doorl = makeDoor(1,1,0,0, false,false)
+  --  background= love.graphics.newImage("assets/backgrounds/background1.png")
+  doorl = makeDoor(1,1,0,100, false,false)
   doorc = makeDoor(1,0,1,W/2-50,false,false)
 --  doorr = makeDoor(1,0,0,W-100, false,true)
   table.insert(room, doorl)
@@ -15,16 +16,11 @@ function T.load()
 end
 
 function T.draw()
+  love.graphics.draw(backgrounds[4], 0,0)
   for i = 1, #room do
       room[i].draw()
     end
-    love.graphics.print("room2b",20,20)
-    love.graphics.setColor(1,1,1,1)
-    love.graphics.rectangle("line", W/4, H/4, 400, 300)
-    love.graphics.line(0, 0,W/4,H/4)
-    love.graphics.line(W/4+400,H/4,W,0)
-    love.graphics.line(0,H,W/4,H/4+300)
-    love.graphics.line(W/4+400, H/4+300, W,H)
+    -- love.graphics.print("room2b",20,20)
     love.graphics.setColor(1,0,0)
     love.graphics.rectangle("fill", W/4, H-50, W/2, 30)
     love.graphics.setColor(1,1,1)
